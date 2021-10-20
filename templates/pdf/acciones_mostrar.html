@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Accionista</title>
+    <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+</head>
+<body>
+<center><h1> Aportaciones </h1></center></br>
+<div>
+    <label>
+        <b>Cliente</b>: {{Cliente}}
+    </label></br>
+    <label>
+        <b>Identidad</b>: {{ Identidad }}
+    </label></br>
+    <label>
+        <b>Fecha de Ingreso</b>: {{ Fecha_Ingreso }}
+    </label></br>
+    <label>
+        <b>Miembro Fundador</b>: {{ Fundador }}
+    </label></br>
+
+</div>
+</br>
+ <table class="table-auto mx-auto w-full mt-8">
+        <thead class="bg-gray-800 text-white">
+        <tr class="uppercase font-semibold text-sm">
+            <th class="px-4 py-2">Fecha</th>
+            <th class="px-4 py-2">N&uacutemm. Recibo</th>
+            <th class="px-4 py-2">Ap. por reglament</th>
+            <th class="px-4 py-2">Ap. extraordinaria</th>
+            <th class="px-4 py-2">Ap. por utilidad</th>
+            <th class="px-4 py-2">Ap. por donaci&oacuten</th>
+            <th class="px-4 py-2">Ap. por intereses</th>
+            <th class="px-4 py-2">Reducci&oacuten</th>
+            <th class="px-4 py-2">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for transaction in object_list %}
+        <tr class="{% cycle 'bg-gray-300' 'bg-white-100' %}">
+            <td class="border px-4 py-2 text-center">{{ transaction.Fecha }}</td>
+            <td class="border px-4 py-2 text-center">{{ transaction.Num_Recibo }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Reglamento }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Extaordinaria }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.ReUtilidadtiro }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Donación }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Intereses }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Perdidas }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Total }}</td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</br>
+</br>
+</br>
+<p>_________________________________ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_________________________________</p>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Cliente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Cooperativa</b>
+</body>
+</html>

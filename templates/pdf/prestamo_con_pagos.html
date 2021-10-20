@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Prestamo</title>
+    <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+</head>
+<body>
+<center><h1> Pr&eacutestamo </h1></center></br>
+<div>
+
+    <label>
+        <b>Cliente</b>: {{Cliente}}
+    </label></br>
+    <label>
+        <b>Identidad</b>: {{ Identidad }}
+    </label></br>
+    <label>
+        <b>Fecha Otorgado</b>: {{ Fecha_O }}
+    </label></br>
+    <label>
+        <b>Plazo en Meses</b>: {{ Plazo }}
+    </label></br>
+     <label>
+        <b>Taza de Interes Anual</b>: {{ Tanual }}
+    </label></br>
+     <label>
+        <b>Taza de Interes Mensual</b>: {{ Tmensual }}
+    </label></br>
+     <label>
+        <b>Periodo de Gracia</b>: {{ Pgracia }}
+    </label></br>
+    <label>
+        <b>Monto</b>: {{ Monto }}
+    </label></br>
+    <label>
+        <b>Recago por Mora</b>: {{ Mora }}
+    </label></br>
+</div>
+</br>
+ <table class="table-auto mx-auto w-full mt-8">
+        <thead class="bg-gray-800 text-white">
+        <tr class="uppercase font-semibold text-sm">
+            <th class="px-4 py-2">N&uacutem Cuota</th>
+            <th class="px-4 py-2">Fecha de Pago</th>
+            <th class="px-4 py-2">N&uacutem Recibo</th>
+            <th class="px-4 py-2">Capital</th>
+            <th class="px-4 py-2">Descuento</th>
+            <th class="px-4 py-2">Intereses</th>
+            <th class="px-4 py-2">Total Cuota</th>
+            <th class="px-4 py-2">Saldo</th>
+            <th class="px-4 py-2">Saldo en Mora</th>
+            <th class="px-4 py-2">Pago</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for transaction in object_list %}
+        <tr class="{% cycle 'bg-gray-300' 'bg-white-100' %}">
+            <td class="border px-4 py-2 text-center">{{ transaction.num_cuota }}</td>
+            <td class="border px-4 py-2 text-center">{{ transaction.Fecha_Pago }}</td>
+            <td class="border px-4 py-2 text-center">{{ transaction.Num_recibo }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Capital }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Descuento }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Intereses }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Monto }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Saldo }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Saldo_mora }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Pago }}</td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</br>
+</br>
+</br>
+<p>_________________________________ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_________________________________</p>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Cliente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma Cooperativa</b>
+</body>
+</html>

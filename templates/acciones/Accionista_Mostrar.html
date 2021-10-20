@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}Aportador{% endblock %}
+
+
+
+{% block content %}
+    <h1 class="font-mono font-bold text-3xl text-center pb-5 pt-10">Miembro</h1>
+    <hr />
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm " for="amount">
+                <b>Cliente</b>: {{Cliente}}
+            </label>
+            <label class="block text-gray-700 text-sm" for="amount">
+                <b>Identidad</b>: {{ Identidad }}
+            </label>
+            <label class="block text-gray-700 text-sm" for="amount">
+                <b>Fecha de Ingreso</b>: {{ Fecha_Ingreso }}
+            </label>
+
+            <label class="block text-gray-700 text-sm" for="amount">
+                <b>Miembro Fundador</b>: {{ Fundador }}
+            </label>
+
+        </div>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+         <a href="{% url 'acciones:imprimir' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Imprimir
+         </a>
+        <a href="{% url 'acciones:guardar' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Guardar
+         </a>
+        <button onclick="Atrás()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Atrás</button>
+        <script>
+        function Atrás() {
+            window.history.back();
+        }
+</script>
+    <table class="table-auto mx-auto w-full mt-8">
+        <thead class="bg-gray-800 text-white">
+        <tr class="uppercase font-semibold text-sm">
+            <th class="px-4 py-2">Fecha</th>
+            <th class="px-4 py-2">Núm. Recibo</th>
+            <th class="px-4 py-2">Aportación por reglamento</th>
+            <th class="px-4 py-2">Aportación extraordinaria</th>
+            <th class="px-4 py-2">Aportación por utilidad</th>
+            <th class="px-4 py-2">Aportación por donación</th>
+            <th class="px-4 py-2">Aportaciones por intereses</th>
+            <th class="px-4 py-2">Reducción</th>
+            <th class="px-4 py-2">Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for transaction in object_list %}
+        <tr class="{% cycle 'bg-gray-300' 'bg-white-100' %}">
+            <td class="border px-4 py-2 text-center">{{ transaction.Fecha }}</td>
+            <td class="border px-4 py-2 text-center">{{ transaction.Num_Recibo }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Reglamento }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Extaordinaria }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.ReUtilidadtiro }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Donación }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Intereses }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Perdidas }}</td>
+            <td class="border px-4 py-2 text-center">L {{ transaction.Total }}</td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
+
+
